@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'GALA Barbershop - Sistema Premium de Gestión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="src/css/style.css">
+
+    <script>
+    // ESTE BLOQUE SE HA MOVIDO DE style.css AQUI.
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    // PALETA CLARA Y PASTEL:
+                    gold: '#C4A15A',             /* Oro suave para acentos principales */
+                    goldLight: '#FFD700', 
+                    goldDark: '#A8853C',
+                    burgundy: '#A84141',         /* Rojo suave/terroso */
+                    navy: '#F0F4F8',             /* Fondo de tarjeta / Gris azulado muy claro */
+                    charcoal: '#F9F9F9',         /* Fondo principal de Dashboard (Gris claro) */
+                    cream: '#4A4A4A',            /* Texto secundario (Gris oscuro para contraste) */
+                    olive: '#808000',
+                    darkCharcoal: '#F1F1F1',     /* Fondo principal de BODY */
+                    primary: '#C4A15A',
+                    secondary: '#FFD700',
+                    dark: '#1F2937',             /* Texto y elementos oscuros */
+                    'dark-lighter': '#374151',
+                    'dark-card': '#FFFFFF',      /* Fondo de tarjetas limpio */
+                    'accent-blue': '#6495ED',    /* Azul Pastel para estados ASIGNADO */
+                    'accent-red': '#FA8072'      /* Rojo Pastel para CANCELADO */
+                },
+                animation: {
+                    'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    'bounce-slow': 'bounce 2s infinite',
+                    'fade-in': 'fadeIn 0.5s ease-in-out',
+                    'slide-up': 'slideUp 0.5s ease-out',
+                    'slide-down': 'slideDown 0.5s ease-out'
+                },
+                keyframes: {
+                    fadeIn: {
+                        '0%': { opacity: '0' },
+                        '100%': { opacity: '1' }
+                    },
+                    slideUp: {
+                        '0%': { transform: 'translateY(20px)', opacity: '0' },
+                        '100%': { transform: 'translateY(0)', opacity: '1' }
+                    },
+                    slideDown: {
+                        '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                        '100%': { transform: 'translateY(0)', opacity: '1' }
+                    }
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body class="bg-darkCharcoal text-gray-100 min-h-screen">
+    <div id="app"></div>
+    <div id="notifications"></div>
+
+    <script src="src/js/config.js"></script>
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/dataManager.js"></script>
+    <script src="src/js/app.js"></script>
+    
+    <script>
+    // Inicialización de la aplicación
+    document.addEventListener('DOMContentLoaded', () => {
+        window.app = new App();
+        window.app.init();  // Agregar estilos globales adicionales (desde el monolito)
+        const style = document.createElement('style');
+        style.textContent = `
+            .hover-lift:hover {
+                transform: translateY(-2px);
+            }
+            
+            .glass-effect {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            @media (max-width: 768px) {
+                .mobile-menu {
+                    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Polyfill para navegadores antiguos
+        if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector || 
+                                      Element.prototype.webkitMatchesSelector;
+        }
+
+        if (!Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do {
+                    if (el.matches(s)) return el;
+                    el = el.parentElement || el.parentNode;
+                } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+    });
+</script>
+</body>
+</html>
