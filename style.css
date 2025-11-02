@@ -1,0 +1,352 @@
+/*
+ * Archivo de Estilos Personalizados D'GALA Barbershop
+ * REPARADO: Solo contiene CSS. La configuración de colores (JS) se movió a index.html.
+ */
+
+/* ------------------------------------------------ */
+/* ESTILOS BASE Y FUENTES */
+/* ------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;500;600;700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ------------------------------------------------ */
+/* CLASES PERSONALIZADAS */
+/* ------------------------------------------------ */
+.gradient-gold {
+    background: linear-gradient(135deg, #C4A15A 0%, #FFD700 50%, #A8853C 100%);
+}
+
+.gradient-bg {
+    /* Fondo claro para login */
+    background: linear-gradient(135deg, #F9F9F9 0%, #F1F1F1 50%, #E0E5EB 100%);
+}
+
+.gradient-navbar {
+    /* Navbar superior clara */
+    background: linear-gradient(90deg, #FFFFFF 0%, #F5F5F5 100%);
+}
+
+.loader {
+    border: 3px solid rgba(196, 161, 90, 0.1);
+    border-top-color: #C4A15A;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    /* Sombra más sutil y dorada */
+    box-shadow: 0 10px 40px rgba(196, 161, 90, 0.2);
+}
+
+.slide-in {
+    animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Colores de Estado (Ajustados a tonos pastel/vibrantes) */
+.estado-pendiente {
+    background: rgba(255, 165, 0, 0.2);
+    color: #FFA500;
+}
+
+.estado-asignado {
+    background: rgba(100, 149, 237, 0.2); /* CornflowerBlue Pastel */
+    color: #6495ED;
+}
+
+.estado-completado {
+    background: rgba(127, 255, 0, 0.2); /* Chartreuse suave */
+    color: #7FFF00;
+}
+
+.estado-cancelado {
+    background: rgba(250, 128, 114, 0.2); /* Salmon suave/pastel */
+    color: #FA8072;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+}
+
+.calendar-day {
+    min-height: 100px;
+    border: 1px solid rgba(196, 161, 90, 0.2);
+    /* Texto debe ser oscuro sobre fondo claro (usando la variable de Tailwind 'dark') */
+    color: #1F2937; 
+}
+
+.calendar-day:hover {
+    background: rgba(196, 161, 90, 0.1);
+}
+
+.form-input {
+    transition: all 0.3s ease;
+    /* Fondo claro, texto oscuro */
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+}
+
+.form-input:focus {
+    box-shadow: 0 0 0 3px rgba(196, 161, 90, 0.3);
+    border-color: #C4A15A;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #C4A15A 0%, #FFD700 50%, #A8853C 100%);
+    transition: all 0.3s ease;
+    /* Texto oscuro sobre el dorado */
+    color: #1F2937 !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(196, 161, 90, 0.4);
+}
+
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.stats-card {
+    /* Fondo de tarjeta muy claro */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+    border: 1px solid rgba(196, 161, 90, 0.3);
+    /* Texto oscuro */
+    color: #1F2937;
+}
+
+.glass-effect {
+    /* El glass effect es sutil sobre fondo claro */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.text-shadow {
+    /* Menos evidente en fondos claros */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.pulse-gold {
+    animation: pulseGold 2s infinite;
+}
+
+@keyframes pulseGold {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 161, 90, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(196, 161, 90, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 161, 90, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #FFFFFF; /* Fondo claro */
+        border-top: 1px solid rgba(196, 161, 90, 0.2);
+        z-index: 30;
+    }
+    
+    .mobile-menu-item {
+        flex: 1;
+        padding: 12px 8px;
+        text-align: center;
+        font-size: 12px;
+        color: #1F2937; /* Texto oscuro */
+    }
+    
+    .mobile-hidden {
+        display: none;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.sidebar {
+    transition: all 0.3s ease;
+    /* Sidebar también claro */
+    background-color: #FFFFFF !important;
+    color: #1F2937 !important;
+    border-right: 1px solid rgba(196, 161, 90, 0.3);
+}
+
+.progress-bar {
+    height: 6px;
+    background: linear-gradient(90deg, #C4A15A 0%, #FFD700 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.floating-action {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(100,100,100,0.1), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: stagger 0.5s ease forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes stagger {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mejoras de accesibilidad */
+.focus-visible:focus {
+    outline: 2px solid #C4A15A;
+    outline-offset: 2px;
+}
+
+.glow {
+    box-shadow: 0 0 20px rgba(196, 161, 90, 0.3);
+}
+
+.glow-strong {
+    box-shadow: 0 0 30px rgba(196, 161, 90, 0.6), 0 0 60px rgba(196, 161, 90, 0.3);
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Estilo para los slots de horario */
+.time-slot {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(196, 161, 90, 0.5);
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #1F2937; /* Texto oscuro */
+}
+
+.time-slot:hover {
+    background-color: #F0F0F0; /* Gris muy claro */
+    box-shadow: 0 0 10px rgba(196, 161, 90, 0.5);
+}
+
+.time-slot.selected {
+    background-color: #C4A15A; /* gold */
+    color: #FFFFFF; /* Texto blanco sobre el oro */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Estilos para el nuevo layout */
+.content-area {
+    margin-left: 0; 
+    transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .content-area {
+        margin-left: 16rem; 
+    }
+    .sidebar.translate-x-full + .content-area {
+        margin-left: 0;
+    }
+}
